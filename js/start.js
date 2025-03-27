@@ -3,8 +3,8 @@ const click = () => {
     if (user) {
         btn.disabled = false;
         localStorage.setItem('username', user);
-        console.log(localStorage.getItem('username'));
-        console.log(localStorage.getItem('username'));
+        var now = new Date();
+        localStorage.setItem('start_date', String(now));
         window.open('pages/board.html');
     } else{
         btn.setAttribute('disabled', '');

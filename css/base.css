@@ -98,7 +98,7 @@ z-index: 1;
 
 .content {
 
-    margin-top: 250px;
+    margin-top: 50px;
 }
 
 .btn-start {
@@ -110,7 +110,6 @@ z-index: 1;
 }
 
 .start-content {
-
     display: flex;
     justify-content: center;
 }
@@ -193,4 +192,6 @@ z-index: 1;
 }
 canvas {
     border: 1px solid black;
+    width: 90%;
+    height: 500px;
   }
