@@ -5,7 +5,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>lifeSaver</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/base.css">
 
 </head>
 
@@ -33,13 +33,13 @@
             <div>
                 <div class="row">
 
-                    <img src="images/logo.png" alt="" srcset="">
+                    <img src="../images/logo.png" alt="" srcset="">
                     <div class="row align-items">
 
-                        <img src="images/user.png" class="ms-1" alt="" srcset="">
+                        <img src="../images/user.png" class="ms-1" alt="" srcset="">
                         <div class="nick" id="nick"></div>
 
-                        <img class="timer ms-1" src="images/clock.png" alt="">
+                        <img class="timer ms-1" src="../images/clock.png" alt="">
                         <div class="time">
 
                             <span id="minute">00</span>
@@ -54,39 +54,16 @@
             </div>
             <button id="re">Рестарт</button>
             <div class="row">
-                <img src="images/heart.png" alt="" class="qwe" srcset="">
+                <img src="../images/heart.png" alt="" class="qwe" srcset="">
                 <div class="score" id="score">0</div>
             </div>
-
-
         </div>
-
-
     </div>
     <div class="content" id="content">
-
-        <div class="row center">
-            <img src="images/logo.png" class="logo-start">
-        </div>
-        <h1 class="text-center">
-            lifeSaver
-        </h1>
-
-        <div class="text-title" id="text">
-            A game about the doctor who saves lives of ill people after a earthquake by collecting hearts in
-            dangerous
-            caves
-        </div>
-        <div class="text-center">Please, enter your username here</div>
-        <div class="start-content">
-
-            <input type="text" id="input" placeholder="Ведите ник">
-
-            <button class="btn-start" id="btn">Начать игру</button>
-        </div>
+        <canvas id="game" width="900" height="400"></canvas>
     </div>
 </div>
 
-<script src="js/start.js"></script>
+<script src="../js/board.js"></script>
 </body>
 </html>

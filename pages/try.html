@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="../css/base.css">
+    </head>
+    <body>
+        <canvas id="game" width="900" height="400"></canvas>
+        <script>
+            var canvas = document.getElementById('game');
+var ctx = canvas.getContext('2d');
+let img = new Image();
+img.src = '../images/player.png';
+img.style.display = 'none';
+img.addEventListener("load", (e) => {
+  ctx.drawImage(img, 0, 0);
+});
+        </script>
+    </body>
+</html>
