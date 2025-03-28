@@ -36,6 +36,7 @@ class Board{
 
 class Doctor{
     constructor(){
+        this.life = true;
         this.img = new Image();
         this.img.src = '../images/player.png';
         this.x = 0;
@@ -56,13 +57,13 @@ class Doctor{
     Move(e){
         let x = this.x;
         let y = this.y;
-        if (e.key.toLowerCase() == 'w'){
+        if (e.key.toLowerCase() == 'w' || e.key.toLowerCase() == 'ц'){
             y -= 64;
-        }else if (e.key.toLowerCase() == 'd'){
+        }else if (e.key.toLowerCase() == 'd' || e.key.toLowerCase() == 'в'){
             x += 64;
-        }else if (e.key.toLowerCase() == 's'){
+        }else if (e.key.toLowerCase() == 's' || e.key.toLowerCase() == 'ы'){
             y += 64;
-        }else if (e.key.toLowerCase() == 'a'){
+        }else if (e.key.toLowerCase() == 'a' || e.key.toLowerCase() == 'ф'){
             x -= 64;
         };
         if (y < 0){
@@ -106,11 +107,17 @@ class Doctor{
         return true;
     }
     Win(){
+        this.life = false;
+        this.img.src = '../images/skull.png';
+        ctx.drawImage(this.img, this.x, this.y);
         clearInterval(time_inter);
         localStorage.setItem('score', this.score);
         window.open('win.html');
     }
     Lose(){
+        this.life = false;
+        this.img.src = '../images/skull.png';
+        ctx.drawImage(this.img, this.x, this.y);
         clearInterval(time_inter);
         localStorage.setItem('score', this.score);
         window.open('lose.html');
@@ -155,10 +162,8 @@ class Stone{
             ctx.drawImage(this.img, this.x, this.y);
           }
         );
-        this.x = getRandomInt(64, canvas.width);
-        this.y = getRandomInt(64, canvas.height);
-        this.field_x = Math.floor(this.x / 64);
-        this.field_y = Math.floor(this.y / 64);
+        this.field_x = getRandomInt(0, board.background.length);
+        this.field_y =getRandomInt(0, board.background[0].length - 1);
         console.log(this.field_x, this.field_y);
         if (this.field_y >= board.background[0].length){
             this.field_y -= 1;
@@ -172,7 +177,7 @@ class Stone{
     Draw(){
         let f = false;
         for (let i = 0; i < 10; i++){
-            if (hearts[i].field_x == this.field_x && hearts[i].field_y == this.field_y){
+            if (hearts[i].field_x == this.field_x && hearts[i].field_y == this.field_y && hearts[i].visible){
                 this.img.src = '../images/heart-in-stone.svg';
                 f = true;
             }
@@ -183,11 +188,6 @@ class Stone{
         ctx.drawImage(this.img, this.field_x * 64, this.field_y * 64);
     }
     Check_block(){
-        console.log(this.field_x, this.field_y);
-        
-        if (Math.floor(doctor.x / 64) == this.field_x && Math.floor(doctor.y / 64) == this.field_y + 1){
-            this.field_y += 1;
-        }
         console.log(this.field_x, this.field_y);
         if (this.field_y >= board.background[0].length - 1){
             this.field_y += 1;
@@ -240,7 +240,9 @@ function restart_func(){
 
 // основной цикл игры
 function loop(){
-    requestAnimationFrame(loop);
+    if (doctor.life){
+        requestAnimationFrame(loop);
+    }
     ctx.clearRect(0, 0, canvas.width, canvas.height); // стираем все
     
     board.Draw();
@@ -258,7 +260,7 @@ function loop(){
 
 const canvas = document.getElementById('game');
 canvas.width = document.documentElement.clientWidth * 0.9;
-canvas.height = 500;
+canvas.height = 600;
 const ctx = canvas.getContext('2d');
 
 var board = new Board(canvas.width, canvas.height);
