@@ -257,7 +257,7 @@ function loop(){
 
 
 const canvas = document.getElementById('game');
-canvas.width = document.documentElement.clientWidth * 0.9;
+canvas.width = document.documentElement.clientWidth;
 canvas.height = 600;
 const ctx = canvas.getContext('2d');
 
