@@ -57,13 +57,14 @@ class Doctor{
     Move(e){
         let x = this.x;
         let y = this.y;
-        if (e.key.toLowerCase() == 'w' || e.key.toLowerCase() == 'ц'){
+        console.log(e.key.toLowerCase());
+        if (e.key.toLowerCase() == 'w' || e.key.toLowerCase() == 'ц' || e.key.toLowerCase() == 'arrowup'){
             y -= 64;
-        }else if (e.key.toLowerCase() == 'd' || e.key.toLowerCase() == 'в'){
+        }else if (e.key.toLowerCase() == 'd' || e.key.toLowerCase() == 'в' || e.key.toLowerCase() == 'arrowright'){
             x += 64;
-        }else if (e.key.toLowerCase() == 's' || e.key.toLowerCase() == 'ы'){
+        }else if (e.key.toLowerCase() == 's' || e.key.toLowerCase() == 'ы' || e.key.toLowerCase() == 'arrowdown'){
             y += 64;
-        }else if (e.key.toLowerCase() == 'a' || e.key.toLowerCase() == 'ф'){
+        }else if (e.key.toLowerCase() == 'a' || e.key.toLowerCase() == 'ф' || e.key.toLowerCase() == 'arrowleft'){
             x -= 64;
         };
         if (y < 0){
@@ -164,7 +165,6 @@ class Stone{
         );
         this.field_x = getRandomInt(0, board.background.length);
         this.field_y =getRandomInt(0, board.background[0].length - 1);
-        console.log(this.field_x, this.field_y);
         if (this.field_y >= board.background[0].length){
             this.field_y -= 1;
         }
@@ -188,12 +188,10 @@ class Stone{
         ctx.drawImage(this.img, this.field_x * 64, this.field_y * 64);
     }
     Check_block(){
-        console.log(this.field_x, this.field_y);
         if (this.field_y >= board.background[0].length - 1){
             this.field_y += 1;
         } else if (this.field_y < (board.background[0].length - 1) && board.background[this.field_x][this.field_y + 1][3] == false){
             this.field_y += 1;
-            console.log('yes');
         }
     }
 }
